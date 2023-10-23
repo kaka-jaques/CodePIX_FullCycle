@@ -15,7 +15,7 @@ const (
 )
 
 // TransactionRepository - Interface para que qualquer um possa comunicar com o banco de dados
-type TransactionRepository interface {
+type TransactionRepositoryInterface interface {
 	Register(transaction *Transaction) error
 	Save(transaction *Transaction) error
 	Find(id string) (*Transaction, error)

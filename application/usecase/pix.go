@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"github.com/kaka-jaques/CodePIX_FullCycle/codepix-go/domain/model"
 )
 
@@ -23,9 +22,19 @@ func (p *PixUseCase) RegisterKey(key string, kind string, accountId string) (*mo
 
 	p.PixKeyRepository.Register(pixKey)
 	if pixKey.ID == "" {
-		return nil, fmt.Errorf("unable to create new key at the moment")
+		return nil, err
 	}
 
 	return pixKey, nil
 
+}
+
+func (p *PixUseCase) FindKey(key string, kind string) (*model.PixKey, error) {
+
+	pixKey, err := p.PixKeyRepository.FindKeyByKind(key, kind)
+
+	if err != nil {
+		return nil, err
+	}
+	return pixKey, nil
 }

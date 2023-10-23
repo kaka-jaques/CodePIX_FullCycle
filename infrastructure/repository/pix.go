@@ -46,7 +46,7 @@ func (r PixKeyRepositoryDb) FinKeyById(key string, kind string) (*model.PixKey, 
 	return &pixKey, nil
 }
 
-func (r PixKeyRepositoryDb) FinAccount(id string) (*model.Account, error) {
+func (r PixKeyRepositoryDb) FindAccount(id string) (*model.Account, error) {
 	var account model.Account
 
 	r.Db.Preload("Bank").First(&account, "id = ?", id)
